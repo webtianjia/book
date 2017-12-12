@@ -137,7 +137,8 @@
       </ul>
     </section>
     <split></split>
-    <section class="section"></section>
+    <main-card></main-card>
+    <split></split>
     <section class="section"></section>
   </div>
 </template>
@@ -145,6 +146,7 @@
 <script>
   import searchDiv from './search-div/search-div.vue'
   import split from './split/split.vue'
+  import mainCard from './main-card/main-card.vue'
   export default {
     name: 'index',
     data () {
@@ -155,7 +157,8 @@
     },
     components: {
       searchDiv,
-      split
+      split,
+      mainCard
     }
   }
 </script>

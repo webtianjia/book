@@ -14,6 +14,6 @@
         type: String,
         default: '#f5f5f5'
       }
-    },
+    }
   }
 </script>
