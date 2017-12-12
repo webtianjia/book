@@ -69,7 +69,7 @@
     </div>
     <div class="card-body border-1px">
       <ul class="book-table">
-        <li class="book-item">
+        <li class="book-item" v-for="i in 6">
             <div class="book-cover">
               <img class="cover"
                    src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
@@ -78,56 +78,6 @@
             <div class="book-info">
               <h3 class="title">驭房有术</h3>
             </div>
-        </li>
-        <li class="book-item">
-          <div class="book-cover">
-            <img class="cover"
-                 src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
-            <div class="tag"></div>
-          </div>
-          <div class="book-info">
-            <h3 class="title">驭房有术</h3>
-          </div>
-        </li>
-        <li class="book-item">
-          <div class="book-cover">
-            <img class="cover"
-                 src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
-            <div class="tag"></div>
-          </div>
-          <div class="book-info">
-            <h3 class="title">驭房有术</h3>
-          </div>
-        </li>
-        <li class="book-item">
-          <div class="book-cover">
-            <img class="cover"
-                 src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
-            <div class="tag"></div>
-          </div>
-          <div class="book-info">
-            <h3 class="title">驭房有术</h3>
-          </div>
-        </li>
-        <li class="book-item">
-          <div class="book-cover">
-            <img class="cover"
-                 src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
-            <div class="tag"></div>
-          </div>
-          <div class="book-info">
-            <h3 class="title">驭房有术</h3>
-          </div>
-        </li>
-        <li class="book-item">
-          <div class="book-cover">
-            <img class="cover"
-                 src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
-            <div class="tag"></div>
-          </div>
-          <div class="book-info">
-            <h3 class="title">驭房有术</h3>
-          </div>
         </li>
       </ul>
     </div>
