@@ -2,12 +2,13 @@
   @import '../assets/css/mixin';
 
   .index {
-    overflow: hidden;
     .main {
-      position: fixed;
       width: 100%;
-      top: 44px;
+      position: fixed;
+      left: 0;
       bottom: 0;
+      top: 44px;
+      overflow: hidden;
     }
     .header-tab {
       padding: 0 90px;
@@ -87,10 +88,107 @@
         }
       }
     }
+    .recommend {
+      .recommend-heading {
+        padding: 15px 13px 14px 13px;
+        .border-1px(#f0f0f0);
+        position: relative;
+        .recommend-title {
+          position: relative;
+          font: bold 13px/13px a;
+          color: rgba(0, 0, 0, .9);
+          i {
+            position: absolute;
+            margin: -1px 0 0 5px;
+            padding: 3px 3px 0px 3px;
+            font: 9px/9px a;
+            color: #fff;
+            background-color: #53ac7d;
+            border-radius: 1px;
+          }
+        }
+        .tab {
+          position: absolute;
+          top: 9px;
+          right: 13px;
+          a {
+            position: relative;
+            padding: 16px 10px;
+            font: 12px/12px a;
+            color: #999;
+            &:first-child:after {
+              content: "";
+              position: absolute;
+              top: 16px;
+              bottom: 16px;
+              right: -2px;
+              width: 1px;
+              border-right: 1px solid #ccc;
+            }
+            &.active {
+              color: #528ae8;
+            }
+          }
+        }
+      }
+      .recommend-body {
+        .border-1px(#f0f0f0);
+        .list {
+          padding: 0 13px;
+          .item {
+            padding: 17px 0;
+
+            &:last-child{
+              .border-no()
+            }
+            display: flex;
+            .order {
+              flex: 0 0 14px;
+              width: 14px;
+              margin-top: 1px;
+              font: 13px/13px a;
+              color: rgba(237, 83, 15, .9);
+            }
+            .info {
+              flex: 1;
+              margin-left: 20px;
+              .title {
+                position: relative;
+                font: 15px/15px a;
+                color: rgba(0, 0, 0, .9);
+                background-color: #fff;
+                .author{
+                  position: absolute;
+                  margin: 1px 0 0 13px;
+                  font: 12px/12px a;
+                  color: rgba(0,0,0,.4);
+                  background-color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+      .recommend-footer{
+        display: flex;
+        a{
+          flex: 1;
+          display: block;
+          padding: 14px;
+          font:13px/1.3em a;
+          text-align: center;
+          color: rgba(0,0,0,.9);
+          box-sizing: border-box;
+          &:first-child{
+            border-right: 1px solid #f0f0f0;
+          }
+        }
+      }
+    }
   }
 </style>
 <template>
-  <div class="index" >
+  <div class="index">
     <div class="header-tab">
       <ul class="tab">
         <li class="tab-item  border-1px" @click="type=1" :class="{'active':type==1}">
@@ -106,54 +204,85 @@
         </svg>
       </a>
     </div>
-    <div ref="main">
-    <main class="main" >
-      <section class="top-home">
-        <search-div placeholder="search"></search-div>
-        <div class="slide-banner">
-          <div class="banner"><img class="cover"
-                                   src="http://image.read.duokan.com/mfsv2/download/fdsc3/p01V1KHze11Q/lb3QSrqV6N2qpI.jpg"
-                                   alt=""></div>
-        </div>
-        <ul class="top-btn-group">
-          <li class="btn-item">
-            <svg class="icon icon-jiage" aria-hidden="true">
-              <use xlink:href="#icon-jiage"></use>
-            </svg>
-            <p>免费</p>
-          </li>
-          <li class="btn-item">
-            <svg class="icon icon-nv" aria-hidden="true">
-              <use xlink:href="#icon-nv"></use>
-            </svg>
-            <p>女生</p>
-          </li>
-          <li class="btn-item">
-            <svg class="icon icon-nan" aria-hidden="true">
-              <use xlink:href="#icon-nan"></use>
-            </svg>
-            <p>男生</p>
-          </li>
-          <li class="btn-item">
-            <svg class="icon icon-fenlei" aria-hidden="true">
-              <use xlink:href="#icon-fenlei"></use>
-            </svg>
-            <p>分类</p>
-          </li>
-          <li class="btn-item">
-            <svg class="icon icon-paixing" aria-hidden="true">
-              <use xlink:href="#icon-paixing"></use>
-            </svg>
-            <p>排行</p>
-          </li>
-        </ul>
-      </section>
-      <split></split>
-      <main-card></main-card>
-      <split></split>
-      <section class="section"></section>
+    <main class="main" ref="main">
+      <div class="container">
+        <section class="top-home">
+          <search-div placeholder="search"></search-div>
+          <div class="slide-banner">
+            <div class="banner"><img class="cover"
+                                     src="http://image.read.duokan.com/mfsv2/download/fdsc3/p01V1KHze11Q/lb3QSrqV6N2qpI.jpg"
+                                     alt=""></div>
+          </div>
+          <ul class="top-btn-group">
+            <li class="btn-item">
+              <svg class="icon icon-jiage" aria-hidden="true">
+                <use xlink:href="#icon-jiage"></use>
+              </svg>
+              <p>免费</p>
+            </li>
+            <li class="btn-item">
+              <svg class="icon icon-nv" aria-hidden="true">
+                <use xlink:href="#icon-nv"></use>
+              </svg>
+              <p>女生</p>
+            </li>
+            <li class="btn-item">
+              <svg class="icon icon-nan" aria-hidden="true">
+                <use xlink:href="#icon-nan"></use>
+              </svg>
+              <p>男生</p>
+            </li>
+            <li class="btn-item">
+              <svg class="icon icon-fenlei" aria-hidden="true">
+                <use xlink:href="#icon-fenlei"></use>
+              </svg>
+              <p>分类</p>
+            </li>
+            <li class="btn-item">
+              <svg class="icon icon-paixing" aria-hidden="true">
+                <use xlink:href="#icon-paixing"></use>
+              </svg>
+              <p>排行</p>
+            </li>
+          </ul>
+        </section>
+        <split></split>
+        <main-card></main-card>
+        <split></split>
+        <section class="recommend">
+          <div class="recommend-heading border-1px">
+            <div class="recommend-title">重磅推荐 <i>推</i></div>
+            <div class="tab">
+              <a href="javascript:" @click="recommend_type=1" :class="{'active':recommend_type==1}">男</a>
+              <a href="javascript:" @click="recommend_type=2" :class="{'active':recommend_type==2}">女</a>
+            </div>
+          </div>
+          <div class="recommend-body border-1px">
+            <ul class="list">
+              <li class="item border-1px">
+                <book-card></book-card>
+              </li>
+              <li v-for="i in 4" class="item border-1px">
+                <span class="order">0{{i+1}}</span>
+                <div class="info">
+                  <div class="title">
+                    异能狂徒在校园
+                    <i class="author">
+                      <span>三寸烟火</span>
+                    </i>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="recommend-footer">
+            <a href="javascript:">换一换</a>
+            <a href="javascript:">查看全部</a>
+          </div>
+        </section>
+        <split></split>
+      </div>
     </main>
-    </div>
   </div>
 </template>
 
@@ -162,19 +291,21 @@
   import split from './split/split.vue'
   import mainCard from './main-card/main-card.vue'
   import BScroll from 'better-scroll'
+  import bookCard from './book-card/book-card.vue'
 
   export default {
     name: 'index',
-    data () {
+    data() {
       return {
-        type: 1
+        type: 1,
+        recommend_type: 1
       }
     },
-    created () {
+    created() {
       this._initBScroll()
     },
     methods: {
-      _initBScroll () {
+      _initBScroll() {
         this.$nextTick(() => {
           this.scroll = new BScroll(this.$refs.main, {
             click: true
@@ -185,7 +316,8 @@
     components: {
       searchDiv,
       split,
-      mainCard
+      mainCard,
+      bookCard
     }
   }
 </script>
