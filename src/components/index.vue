@@ -14,7 +14,7 @@
       padding: 0 90px;
       line-height: 44px;
       position: relative;
-      z-index: 999;
+      z-index: 20;
       text-align: center;
       background: #efeff0;
       .border-1px(#ddd);
@@ -138,7 +138,7 @@
           .item {
             padding: 17px 0;
 
-            &:last-child{
+            &:last-child {
               .border-no()
             }
             display: flex;
@@ -157,11 +157,11 @@
                 font: 15px/15px a;
                 color: rgba(0, 0, 0, .9);
                 background-color: #fff;
-                .author{
+                .author {
                   position: absolute;
                   margin: 1px 0 0 13px;
                   font: 12px/12px a;
-                  color: rgba(0,0,0,.4);
+                  color: rgba(0, 0, 0, .4);
                   background-color: #fff;
                 }
               }
@@ -169,17 +169,17 @@
           }
         }
       }
-      .recommend-footer{
+      .recommend-footer {
         display: flex;
-        a{
+        a {
           flex: 1;
           display: block;
           padding: 14px;
-          font:13px/1.3em a;
+          font: 13px/1.3em a;
           text-align: center;
-          color: rgba(0,0,0,.9);
+          color: rgba(0, 0, 0, .9);
           box-sizing: border-box;
-          &:first-child{
+          &:first-child {
             border-right: 1px solid #f0f0f0;
           }
         }
@@ -259,11 +259,11 @@
           </div>
           <div class="recommend-body border-1px">
             <ul class="list">
-              <li class="item border-1px">
+              <li class="item border-1px" @click="show_detail">
                 <book-card></book-card>
               </li>
               <li v-for="i in 4" class="item border-1px">
-                <span class="order">0{{i+1}}</span>
+                <span class="order">0{{i + 1}}</span>
                 <div class="info">
                   <div class="title">
                     异能狂徒在校园
@@ -283,41 +283,46 @@
         <split></split>
       </div>
     </main>
+    <book-detail ref="book_detail"></book-detail>
   </div>
 </template>
-
 <script>
   import searchDiv from './search-div/search-div.vue'
   import split from './split/split.vue'
   import mainCard from './main-card/main-card.vue'
   import BScroll from 'better-scroll'
   import bookCard from './book-card/book-card.vue'
+  import bookDetail from './book-detail/book-detail.vue'
 
   export default {
     name: 'index',
-    data() {
+    data () {
       return {
         type: 1,
         recommend_type: 1
       }
     },
-    created() {
+    created () {
       this._initBScroll()
     },
     methods: {
-      _initBScroll() {
+      _initBScroll () {
         this.$nextTick(() => {
           this.scroll = new BScroll(this.$refs.main, {
             click: true
           })
         })
+      },
+      show_detail () {
+        this.$refs.book_detail.show()
       }
     },
     components: {
       searchDiv,
       split,
       mainCard,
-      bookCard
+      bookCard,
+      bookDetail
     }
   }
 </script>
