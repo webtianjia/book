@@ -80,7 +80,7 @@
             &.icon-fenlei {
               color: rgb(45, 203, 116);
             }
-            &.icon-paixing {
+            &.icon-paihang {
               color: rgb(255, 148, 43);
             }
           }
@@ -199,7 +199,7 @@
       </ul>
       <a class="login-link" href="#">
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-user"></use>
+          <use xlink:href="#icon-iconfontgerenzhongxin"></use>
         </svg>
       </a>
     </div>
@@ -215,7 +215,7 @@
           <ul class="top-btn-group">
             <li class="btn-item">
               <svg class="icon icon-jiage" aria-hidden="true">
-                <use xlink:href="#icon-jiage"></use>
+                <use xlink:href="#icon-jiagexinxi"></use>
               </svg>
               <p>免费</p>
             </li>
@@ -233,13 +233,13 @@
             </li>
             <li class="btn-item">
               <svg class="icon icon-fenlei" aria-hidden="true">
-                <use xlink:href="#icon-fenlei"></use>
+                <use xlink:href="#icon-leimupinleifenleileibie"></use>
               </svg>
               <p>分类</p>
             </li>
             <li class="btn-item">
-              <svg class="icon icon-paixing" aria-hidden="true">
-                <use xlink:href="#icon-paixing"></use>
+              <svg class="icon icon-paihang" aria-hidden="true">
+                <use xlink:href="#icon-paihang"></use>
               </svg>
               <p>排行</p>
             </li>

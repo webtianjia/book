@@ -104,7 +104,7 @@
       <div class="top">
         <a @click="hide" class="top-back" href="javascript:">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fanhui"></use>
+            <use xlink:href="#icon-40"></use>
           </svg>
         </a>
         <span class="top-title">婚后相爱：腹黑老公爆萌妻</span>
