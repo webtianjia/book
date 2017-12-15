@@ -294,17 +294,17 @@
 
   export default {
     name: 'index',
-    data() {
+    data () {
       return {
         type: 1,
         recommend_type: 1
       }
     },
-    created() {
+    created () {
       this._initBScroll()
     },
     methods: {
-      _initBScroll() {
+      _initBScroll () {
         this.$nextTick(() => {
           this.scroll = new BScroll(this.$refs.main, {
             click: true
