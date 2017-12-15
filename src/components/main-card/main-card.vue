@@ -69,7 +69,7 @@
     </div>
     <div class="card-body border-1px">
       <ul class="book-table">
-        <li class="book-item" v-for="i in 6">
+        <li class="book-item" v-for="(i,$index) in 6" @click="_showdetail($index)">
           <div class="book-cover">
             <img class="cover"
                  src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01I66oHszK2/7CDwQEqR7CFkXT.jpg!s" alt="">
@@ -91,6 +91,10 @@
     data () {
       return {}
     },
-    methods: {}
+    methods: {
+      _showdetail  (bookId) {
+        this.$emit('show_detail', bookId)
+      }
+    }
   }
 </script>

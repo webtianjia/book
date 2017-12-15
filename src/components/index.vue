@@ -136,7 +136,7 @@
           padding: 0 13px;
           .item {
             padding: 17px 0;
-
+            .border-1px(#f0f0f0);
             &:last-child{
               .border-no()
             }
@@ -206,7 +206,7 @@
     <main class="main" ref="main">
       <div class="container">
         <section class="top-home">
-          <search-div placeholder="search"></search-div>
+          <search-div></search-div>
           <div class="slide-banner">
             <div class="banner"><img class="cover"
                                      src="http://image.read.duokan.com/mfsv2/download/fdsc3/p01V1KHze11Q/lb3QSrqV6N2qpI.jpg"
@@ -246,7 +246,7 @@
           </ul>
         </section>
         <split></split>
-        <main-card></main-card>
+        <main-card @show_detail="showDateli"></main-card>
         <split></split>
         <section class="recommend">
           <div class="recommend-heading border-1px">
@@ -282,6 +282,7 @@
         <split></split>
       </div>
     </main>
+    <book-detail  ref="book_detail"></book-detail>
   </div>
 </template>
 
@@ -291,7 +292,7 @@
   import mainCard from './main-card/main-card.vue'
   import BScroll from 'better-scroll'
   import bookCard from './book-card/book-card.vue'
-
+  import bookDetail from './book-detail/book-detail.vue'
   export default {
     name: 'index',
     data () {
@@ -310,13 +311,18 @@
             click: true
           })
         })
+      },
+      showDateli (bookId) {
+        this.$refs.book_detail.show()
+        console.log(bookId)
       }
     },
     components: {
       searchDiv,
       split,
       mainCard,
-      bookCard
+      bookCard,
+      bookDetail
     }
   }
 </script>
