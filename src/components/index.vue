@@ -14,7 +14,6 @@
       padding: 0 90px;
       line-height: 44px;
       position: relative;
-      z-index: 999;
       text-align: center;
       background: #efeff0;
       .border-1px(#ddd);
@@ -89,14 +88,56 @@
       }
     }
     .recommend {
+      .recommend-heading {
+        padding: 15px 13px 14px 13px;
+        .border-1px(#f0f0f0);
+        position: relative;
+        .recommend-title {
+          position: relative;
+          font: bold 13px/13px a;
+          color: rgba(0, 0, 0, .9);
+          i {
+            position: absolute;
+            margin: -1px 0 0 5px;
+            padding: 3px 3px 0px 3px;
+            font: 9px/9px a;
+            color: #fff;
+            background-color: #53ac7d;
+            border-radius: 1px;
+          }
+        }
+        .tab {
+          position: absolute;
+          top: 9px;
+          right: 13px;
+          a {
+            position: relative;
+            padding: 16px 10px;
+            font: 12px/12px a;
+            color: #999;
+            &:first-child:after {
+              content: "";
+              position: absolute;
+              top: 16px;
+              bottom: 16px;
+              right: -2px;
+              width: 1px;
+              border-right: 1px solid #ccc;
+            }
+            &.active {
+              color: #528ae8;
+            }
+          }
+        }
+      }
       .recommend-body {
         .border-1px(#f0f0f0);
         .list {
           padding: 0 13px;
           .item {
             padding: 17px 0;
-            .border-1px(#f0f0f0);
-            &:last-child {
+
+            &:last-child{
               .border-no()
             }
             display: flex;
@@ -115,15 +156,30 @@
                 font: 15px/15px a;
                 color: rgba(0, 0, 0, .9);
                 background-color: #fff;
-                .author {
+                .author{
                   position: absolute;
                   margin: 1px 0 0 13px;
                   font: 12px/12px a;
-                  color: rgba(0, 0, 0, .4);
+                  color: rgba(0,0,0,.4);
                   background-color: #fff;
                 }
               }
             }
+          }
+        }
+      }
+      .recommend-footer{
+        display: flex;
+        a{
+          flex: 1;
+          display: block;
+          padding: 14px;
+          font:13px/1.3em a;
+          text-align: center;
+          color: rgba(0,0,0,.9);
+          box-sizing: border-box;
+          &:first-child{
+            border-right: 1px solid #f0f0f0;
           }
         }
       }
@@ -193,14 +249,20 @@
         <main-card></main-card>
         <split></split>
         <section class="recommend">
-         <list-heading title="重磅推荐'" :tab="true" :recommend="true"></list-heading>
+          <div class="recommend-heading border-1px">
+            <div class="recommend-title">重磅推荐 <i>推</i></div>
+            <div class="tab">
+              <a href="javascript:" @click="recommend_type=1" :class="{'active':recommend_type==1}">男</a>
+              <a href="javascript:" @click="recommend_type=2" :class="{'active':recommend_type==2}">女</a>
+            </div>
+          </div>
           <div class="recommend-body border-1px">
             <ul class="list">
               <li class="item border-1px">
                 <book-card></book-card>
               </li>
               <li v-for="i in 4" class="item border-1px">
-                <span class="order">0{{i + 1}}</span>
+                <span class="order">0{{i+1}}</span>
                 <div class="info">
                   <div class="title">
                     异能狂徒在校园
@@ -217,7 +279,6 @@
             <a href="javascript:">查看全部</a>
           </div>
         </section>
-        <section class=""></section>
         <split></split>
       </div>
     </main>
@@ -230,20 +291,20 @@
   import mainCard from './main-card/main-card.vue'
   import BScroll from 'better-scroll'
   import bookCard from './book-card/book-card.vue'
-  import listHeading from './list-heading/list-heading.vue'
+
   export default {
     name: 'index',
-    data () {
+    data() {
       return {
         type: 1,
         recommend_type: 1
       }
     },
-    created () {
+    created() {
       this._initBScroll()
     },
     methods: {
-      _initBScroll () {
+      _initBScroll() {
         this.$nextTick(() => {
           this.scroll = new BScroll(this.$refs.main, {
             click: true
@@ -255,8 +316,7 @@
       searchDiv,
       split,
       mainCard,
-      bookCard,
-      listHeading
+      bookCard
     }
   }
 </script>
