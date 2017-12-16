@@ -1,7 +1,6 @@
 <style lang="less" scoped>
   @import "../../assets/css/mixin";
   @import "../../assets/css/animated";
-
   .book-detail {
     width: 100%;
     position: fixed;
