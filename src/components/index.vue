@@ -282,7 +282,8 @@
         <split></split>
       </div>
     </main>
-    <book-detail  ref="book_detail"></book-detail>
+    <book-detail  ref="book_detail" @startReading="startReading"></book-detail>
+    <book-reader ref="book_reader"></book-reader>
   </div>
 </template>
 
@@ -293,6 +294,7 @@
   import BScroll from 'better-scroll'
   import bookCard from './book-card/book-card.vue'
   import bookDetail from './book-detail/book-detail.vue'
+  import bookReader from './reader/reader .vue'
   export default {
     name: 'index',
     data () {
@@ -314,7 +316,9 @@
       },
       showDateli (bookId) {
         this.$refs.book_detail.show()
-        console.log(bookId)
+      },
+      startReading (bookId) {
+        this.$refs.book_reader.show()
       }
     },
     components: {
@@ -322,7 +326,8 @@
       split,
       mainCard,
       bookCard,
-      bookDetail
+      bookDetail,
+      bookReader
     }
   }
 </script>

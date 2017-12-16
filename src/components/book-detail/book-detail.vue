@@ -129,7 +129,7 @@
               <div class="wrap">
                 <ul class="btn-group">
                   <li class="btn-item">
-                    <a class="hot" href="javascropt:">开始阅读</a>
+                    <a @click="startReading" class="hot">开始阅读</a>
                   </li>
                   <li class="btn-item">
                     <a href="javascropt:">下载</a>
@@ -182,6 +182,9 @@
       },
       hide () {
         this.showFlag = false
+      },
+      startReading () {
+        this.$emit('startReading', 1)
       }
     },
     components: {
