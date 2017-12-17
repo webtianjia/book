@@ -368,7 +368,7 @@
         <transition name="move">
           <div v-if="moreFlag" class="reader-popup">
             <div class="popup-body ">
-              <div class="reader-book" @click.stop.parents="returnDetail">
+              <div class="reader-book" @click="hide">
                 <img class="book-cover"
                      src="http://cover.read.duokan.com/mfsv2/download/s010/p01I1zQew1EB/MEp59LJ9HQEJ7f.jpg!s" alt="">
                 <h3 class="book-title">婚后相爱：腹黑老公爆萌妻</h3>
@@ -381,7 +381,6 @@
                 <span class="text"> 自动购买下一章</span>
               </div>
             </div>
-
           </div>
         </transition>
       </a>
@@ -399,7 +398,7 @@
             <use xlink:href="#icon-zitidaxiao"></use>
           </svg>
           <p class="icon-name">字体</p>
-          <div v-show="fontFlag" class="reader-font" @click.stop>
+          <div v-show="fontFlag" class="reader-font" @click.stop.paren>
             <div class="font-size">
               <span>字号</span>
               <a @click.stop="plusFont" href="javascript:" class="font-large">大</a>
@@ -419,15 +418,15 @@
         <li class="btn-item" @click="toggleNight">
           <div v-if="night">
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-yejianzhuanhuan"></use>
-            </svg>
-            <p class="icon-name">夜间</p>
-          </div>
-          <div v-else>
-            <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-baitianmoshi"></use>
             </svg>
             <p class="icon-name">白天</p>
+          </div>
+          <div v-else>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-yejianzhuanhuan"></use>
+            </svg>
+            <p class="icon-name">夜间</p>
           </div>
         </li>
         <li class="btn-item">
@@ -477,9 +476,6 @@
       },
       toggleMore () {
         this.moreFlag = !this.moreFlag
-      },
-      returnDetail () {
-        window.history.go(-1)
       },
       toggleControl () {
         this.mask = !this.mask

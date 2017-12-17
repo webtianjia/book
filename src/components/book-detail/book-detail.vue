@@ -151,7 +151,7 @@
               </div>
             </div>
             <split></split>
-          <book-card v-for="i in 10"></book-card>
+
         </div>
         </div>
     </section>
