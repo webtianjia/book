@@ -23,7 +23,7 @@
 </template>
 <script>
   export default {
-    props:{
+    props: {
 
     },
     data () {

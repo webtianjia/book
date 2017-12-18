@@ -61,7 +61,7 @@
         default: false
       },
       recommend: {
-        type: Boolean,
+        type: [Boolean, String],
         default: false
       },
       title: {

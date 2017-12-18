@@ -186,8 +186,12 @@
     }
   }
 </style>
+
 <template>
   <div class="index">
+    <div style="padding:0 98px">
+      <range></range>
+    </div>
     <div class="header-tab">
       <ul class="tab">
         <li class="tab-item  border-1px" @click="type=1" :class="{'active':type==1}">
@@ -280,6 +284,7 @@
           </div>
         </section>
         <split></split>
+
       </div>
     </main>
     <book-detail  ref="book_detail" @startReading="startReading"></book-detail>
@@ -295,6 +300,7 @@
   import bookCard from './book-card/book-card.vue'
   import bookDetail from './book-detail/book-detail.vue'
   import bookReader from './reader/reader .vue'
+  import range from './range/range.vue'
   export default {
     name: 'index',
     data () {
@@ -327,7 +333,8 @@
       mainCard,
       bookCard,
       bookDetail,
-      bookReader
+      bookReader,
+      range
     }
   }
 </script>
