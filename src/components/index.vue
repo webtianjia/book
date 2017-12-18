@@ -190,7 +190,8 @@
 <template>
   <div class="index">
     <div style="padding:0 98px">
-      <range></range>
+      <range v-model="value"></range>
+      <input type="text" v-model="value">
     </div>
     <div class="header-tab">
       <ul class="tab">
@@ -306,7 +307,8 @@
     data () {
       return {
         type: 1,
-        recommend_type: 1
+        recommend_type: 1,
+        value: 0
       }
     },
     created () {

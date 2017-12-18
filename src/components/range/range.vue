@@ -40,9 +40,9 @@
 </style>
 <template>
   <div class="range">
-    <div class="range-wrap" ref="lineDiv">
-      <div class="range-bar" :style="{'width':onleft+'px'}"></div>
-      <div class="range-button-wrap" :style="{'left':onleft+'px'}"
+    <div class="range-wrap" ref="lineDiv" @click="clickMove($event)">
+      <div class="range-bar" :style="{'width':value+'px'}"></div>
+      <div class="range-button-wrap" :style="{'left':value+'px'}"
            @touchstart="start"
            @touchmove="move($event)"
            @touchend="end"
@@ -56,9 +56,18 @@
     export default {
       data () {
         return {
+          currentValue: this.value,
           isBoolean: false,
           x: 0,
-          onleft: 0
+          value: 0
+        }
+      },
+      watch: {
+        value (val) {
+          this.currentValue = Math.round((val / this.$refs.lineDiv.offsetWidth) * 100)
+        },
+        currentValue (val) {
+          this.$emit('input', val)
         }
       },
       methods: {
@@ -70,7 +79,6 @@
               this.x = event.touches[0].pageX
             }
           }
-          console.log(this.x)
           this.left()
         },
         start () {
@@ -101,7 +109,11 @@
           if (left < 0) {
             left = 0
           }
-          this.onleft = left
+          this.value = left
+        },
+        clickMove (event) {
+          this.x = event.clientX
+          this.left()
         }
       }
     }

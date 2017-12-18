@@ -306,11 +306,20 @@
       color: #4e534f;
       background: #e9dfc7;
     }
+    .brightness{
+      display: flex;
+      .reader-range{
+        flex: 1;
+      }
+      .reader-rotate{
+        flex:0 0 30px;
+      }
+    }
   }
 </style>
 <template>
   <transition name="move">
-  <section class="reader " ref="reader" v-show="showFlag">
+  <section class="reader " ref="reader" v-show="showFlag" :style="{'filter':`brightness(${brightness*.11+.4})`}">
     <main class="reader-chapter" :style="{'fontSize':fontSize+'px'}" :data-bg="Bgindex" :data-night="night">
       <ul class="chapter">
         <li>
@@ -399,6 +408,10 @@
           </svg>
           <p class="icon-name">字体</p>
           <div v-show="fontFlag" class="reader-font" @click.stop.paren>
+            <div class="brightness">
+              <range class="reader-range" v-model="brightness"></range>
+              <rotate class="reader-rotate" :size="24" :rotate="brightness"></rotate>
+            </div>
             <div class="font-size">
               <span>字号</span>
               <a @click.stop="plusFont" href="javascript:" class="font-large">大</a>
@@ -443,6 +456,8 @@
 </template>
 <script>
   import BScroll from 'better-scroll'
+  import range from '../range/range.vue'
+  import rotate from '../rotate/rotate.vue'
   export default {
     name: 'reader',
     data () {
@@ -454,7 +469,8 @@
         night: true,
         mask: false,
         fontSize: 17,
-        Bgindex: 1
+        Bgindex: 1,
+        brightness: 1
       }
     },
     created () {
@@ -499,6 +515,10 @@
         if (this.fontSize < 12) return
         this.fontSize--
       }
+    },
+    components: {
+      range,
+      rotate
     }
   }
 </script>
