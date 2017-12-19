@@ -323,7 +323,7 @@
 </style>
 <template>
   <transition name="move">
-  <section class="reader " ref="reader" v-show="showFlag" :style="{'filter':`brightness(${brightness*.11+.4})`}">
+  <section class="reader " ref="reader" v-show="showFlag" :style="{'filter':`saturate(${brightness*.1})`}">
     <main class="reader-chapter" :style="{'fontSize':fontSize+'px'}" :data-bg="Bgindex" :data-night="night">
       <ul class="chapter">
         <li>
@@ -411,7 +411,7 @@
             <use xlink:href="#icon-zitidaxiao"></use>
           </svg>
           <p class="icon-name">字体</p>
-          <div v-show="fontFlag" class="reader-font" @click.stop.paren>
+          <div v-show="fontFlag" class="reader-font" @click.stop>
             <div class="brightness">
               <range class="reader-range" v-model="brightness"></range>
               <rotate class="reader-rotate" :size="18" v-model="brightness"></rotate>
