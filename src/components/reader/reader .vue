@@ -323,7 +323,7 @@
 </style>
 <template>
   <transition name="move">
-  <section class="reader " ref="reader" v-show="showFlag" :style="{'filter':`saturate(${brightness*.1})`}">
+  <section class="reader " ref="reader" v-show="showFlag" :style="{'filter':`brightness(1)`}">
     <main class="reader-chapter" :style="{'fontSize':fontSize+'px'}" :data-bg="Bgindex" :data-night="night">
       <ul class="chapter">
         <li>
@@ -478,11 +478,11 @@
       }
     },
     created () {
-      this.$nextTick(() => {
+/*      this.$nextTick(() => {
         this.scroll = new BScroll(this.$refs.reader, {
           click: true
         })
-      })
+      })*/
     },
     methods: {
       show () {

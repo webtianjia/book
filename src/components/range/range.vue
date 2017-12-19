@@ -40,7 +40,7 @@
 </style>
 <template>
   <div class="range">
-    <div class="range-wrap" ref="lineDiv" @click="clickMove($event)">
+    <div class="range-wrap" ref="lineDiv" @click.self="clickMove($event)">
       <div class="range-bar" :style="{'width':value+'px'}"></div>
       <div class="range-button-wrap" :style="{'left':value+'px'}"
            @touchstart="start"
@@ -56,7 +56,35 @@
   </div>
 </template>
 <script>
+  function camelCase (name) {
+    return name.replace(SPECIAL_CHARS_REGEXP, function (_, separator, letter, offset) {
+      return offset ? letter.toUpperCase() : letter;
+    }).replace(MOZ_HACK_REGEXP, 'Moz$1');
+  }
+  function getStyle (element, styleName) {
+    if (!element || !styleName) return null
+      styleName = camelCase (styleName)
+    if (styleName === 'float') {
+      styleName = 'cssFloat'
+    }
+    try {
+      const computed = document.defaultView.getComputedStyle(element, '')
+      return element.style[styleName] || computed ? computed[styleName] : null
+     } catch (e) {
+      return element.style[styleName]
+    }
+  }
     export default {
+      props: {
+        min: {
+          type: Number,
+          default: 0
+        },
+        max: {
+          type: Number,
+          default: 100
+        }
+      },
       data () {
         return {
           currentValue: this.value,
@@ -71,6 +99,11 @@
         },
         currentValue (val) {
           this.$emit('input', val)
+        }
+      },
+      computed: {
+        sliderWidth () {
+          return parseInt(getStyle(this.$refs.slider, 'width'), 10);
         }
       },
       methods: {
@@ -115,8 +148,44 @@
           this.value = left
         },
         clickMove (event) {
-          this.x = event.clientX
-          this.left()
+          const currentX = event.clientX
+          const sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().left;
+          const newPos = (currentX - sliderOffsetLeft) / this.sliderWidth * 100;
+          if (this.range) {
+            let type = '';
+            if (newPos <= this.firstPosition) {
+              type = 'First';
+            } else if (newPos >= this.secondPosition) {
+              type = 'Second';
+            } else {
+              if ((newPos - this.firstPosition) <= (this.secondPosition - newPos)) {
+                type = 'First';
+              } else {
+                type = 'Second';
+              }
+            }
+            this[`change${type}Position`](newPos);
+          } else {
+            this.changeSinglePosition(newPos);
+          }
+        },
+        changeSinglePosition (newPos) {
+          if (newPos < 0) {
+            newPos = 0
+          } else if (newPos > 100) {
+            newPos = 100
+          }
+          const lengthPerStep = 100 / ((this.max - this.min) / this.step);
+          const steps = Math.round(newPos / lengthPerStep);
+          this.currentValue = Math.round(steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min);
+          this.setSinglePosition(this.currentValue);
+          if (!this.dragging) {
+            if (this.currentValue !== this.oldSingleValue) {
+              this.$emit('on-change', this.currentValue);
+              this.dispatch('FormItem', 'on-form-change', this.currentValue);
+              this.oldSingleValue = this.currentValue;
+            }
+          }
         }
       }
     }
