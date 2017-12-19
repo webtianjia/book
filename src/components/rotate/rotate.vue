@@ -7,12 +7,11 @@
       transition: all .2s linear;
       transform-origin: center;
     }
-
   }
 </style>
 <template>
-  <div class="rotate" :style="{}">
-    <svg class="icon" :style="{'fontSize':size,'transform':`rotate(${rotate}deg)`}" aria-hidden="true">
+  <div class="rotate">
+    <svg class="icon" :style="{'fontSize':size,'transform':`rotate(${currentValue}deg)`}" aria-hidden="true">
       <use xlink:href="#icon-baitianmoshi"></use>
     </svg>
   </div>
@@ -24,16 +23,19 @@
         type: Number,
         default: 12
       },
-      rotate: {
+      value: {
         type: Number
       }
     },
     data () {
-      return {}
+      return {
+        currentValue: this.value
+      }
     },
-    watch:{
-
-    },
-    methods: {}
+    watch: {
+      value (val) {
+        this.currentValue = val
+      }
+    }
   }
 </script>

@@ -190,7 +190,7 @@
       }
       .reader-font {
         display: block;
-        height: 135px;
+        height: 181px;
         position: absolute;
         left: 0;
         right: 0;
@@ -268,6 +268,19 @@
             }
           }
         }
+        .brightness{
+          display: flex;
+          padding: 5px 40px;
+          .reader-range{
+            flex: 1;
+          }
+          .reader-rotate{
+            flex:0 0 30px;
+            margin-left: 20px;
+            position: relative;
+            top: 8px;
+          }
+        }
       }
     }
     .reader-mask {
@@ -305,15 +318,6 @@
     [data-night="false"] {
       color: #4e534f;
       background: #e9dfc7;
-    }
-    .brightness{
-      display: flex;
-      .reader-range{
-        flex: 1;
-      }
-      .reader-rotate{
-        flex:0 0 30px;
-      }
     }
   }
 </style>
@@ -410,7 +414,7 @@
           <div v-show="fontFlag" class="reader-font" @click.stop.paren>
             <div class="brightness">
               <range class="reader-range" v-model="brightness"></range>
-              <rotate class="reader-rotate" :size="24" :rotate="brightness"></rotate>
+              <rotate class="reader-rotate" :size="18" v-model="brightness"></rotate>
             </div>
             <div class="font-size">
               <span>字号</span>

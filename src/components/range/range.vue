@@ -46,6 +46,9 @@
            @touchstart="start"
            @touchmove="move($event)"
            @touchend="end"
+           @mousedown="start"
+           @mousemove="move($event)"
+           @mouseup="end"
           >
             <div class="range-slider-button"></div>
       </div>
