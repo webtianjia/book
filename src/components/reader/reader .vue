@@ -459,7 +459,6 @@
   </transition>
 </template>
 <script>
-  import BScroll from 'better-scroll'
   import range from '../range/range.vue'
   import rotate from '../rotate/rotate.vue'
   export default {
@@ -476,13 +475,6 @@
         Bgindex: 1,
         brightness: 1
       }
-    },
-    created () {
-/*      this.$nextTick(() => {
-        this.scroll = new BScroll(this.$refs.reader, {
-          click: true
-        })
-      })*/
     },
     methods: {
       show () {
