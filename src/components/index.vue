@@ -290,6 +290,7 @@
     </main>
     <book-detail  ref="book_detail" @startReading="startReading"></book-detail>
     <book-reader ref="book_reader"></book-reader>
+    <loading></loading>
   </div>
 </template>
 
@@ -302,6 +303,7 @@
   import bookDetail from './book-detail/book-detail.vue'
   import bookReader from './reader/reader .vue'
   import range from './range/range.vue'
+  import loading from './loading/loading.vue'
   export default {
     name: 'index',
     data () {
@@ -336,7 +338,8 @@
       bookCard,
       bookDetail,
       bookReader,
-      range
+      range,
+      loading
     }
   }
 </script>
