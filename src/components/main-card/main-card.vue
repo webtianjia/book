@@ -65,7 +65,7 @@
 <template>
   <section class="main-card">
     <div class="card-heading">
-      <h1 class="card-title">本周最火</h1>
+      <h1 class="card-title">{{title}}</h1>
     </div>
     <div class="card-body border-1px">
       <ul class="book-table">
@@ -88,6 +88,11 @@
 </template>
 <script>
   export default {
+    props: {
+      title: {
+        type: String
+      }
+    },
     data () {
       return {}
     },

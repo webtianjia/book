@@ -40,7 +40,7 @@
 </style>
 <template>
   <div class="range">
-    <div class="range-wrap" ref="lineDiv" @click.self="clickMove($event)">
+    <div class="range-wrap" ref="lineDiv" @click="clickMove($event)">
       <div class="range-bar" :style="{'width':value+'px'}"></div>
       <div class="range-button-wrap" :style="{'left':value+'px'}"
            @touchstart="start"

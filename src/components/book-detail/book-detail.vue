@@ -45,7 +45,106 @@
     .card {
       padding: 30px 20px 30px 30px;
       width: 100%;
+      display: table;
+      width: 100%;
       box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      .book-cover{
+        width: 93px;
+        height: 124px;
+        margin-right: 18px;
+        position: relative;
+        background-color: #eeece9;
+        box-shadow: 0px 6px 5px -3px #aaa;
+        border: 1px solid #f0f0f0;
+        border-bottom: none;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+        .tag{
+          background-color: #49ab3f;
+          font-size: 12px;
+          position: absolute;
+          top:0;
+          left: 0;
+          line-height: 1.4;
+          color: #fff;
+          width: 100%;
+          transform-origin: top center;
+          transform: translateX(50%) rotate(45deg) translateY(50%) scale(0.8);
+          text-align: center;
+          &:before{
+            content:'\9650\514d';
+          }
+        }
+      }
+      .info{
+        padding: 0;
+        display:table-cell;
+        vertical-align: middle;
+        .title{
+          margin-bottom: 13px;
+          font-size: 1.6rem;
+          overflow: hidden;
+          font-weight: 400;
+          color: #000;
+        }
+        .author{
+          color: #4b99a7;
+          line-height: 1.4;
+          margin-top: 4px;
+          font-size: 12px;
+          span{
+            display: inline-block;
+            margin-right: 5px;
+            line-height: 1.4;
+            color: #4b99a7;
+
+          }
+        }
+        .grade{
+          line-height: 1;
+          .star{
+            display: inline-block;
+            font-size: 0;
+             width: 80px;
+            vertical-align: middle;
+            .icon{
+              line-height: 1em;
+              vertical-align: middle;
+              font-size: 12px;
+              margin-right: 5px;
+              &:last-child{
+                margin-right: 0;
+              }
+              color: #ff8c05;
+            }
+          }
+          .read{
+            vertical-align: middle;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #8d8d8d
+          }
+        }
+        .count{
+          color: #6e6e6e;
+          font-size: 12px;
+          .serial{
+            color: #63bd6e;
+            border-color: #63bd6e;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 16px;
+            display: inline-block;
+            transform: scale(.83);
+            padding: 0 2px;
+          }
+        }
+      }
     }
     .book-dash {
       .wrap {
@@ -102,6 +201,65 @@
         }
       }
     }
+    .book-tags{
+      .title{
+        font-size: 16px;
+        font-weight: normal;
+        color: #8d8d8d;
+        padding: 14px 14px 8px;
+      }
+      .cnt{
+        position: relative;
+        line-height: 1.6;
+        padding: 0 14px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #585858;
+        .tags{
+          line-height: 1;
+          overflow: hidden;
+          .tag-item{
+            display: inline-block;
+            width: auto;
+            line-height: 1.8em;
+            padding: 0 20px;
+            color: #766d5d;
+            border-radius: 4px;
+            background: #909da8;
+            font-size: 14px;
+            text-align: center;
+            border:1px solid #d3d3d3;
+            margin: 0 10px 5px 0;
+            &:nth-child(3n+1){
+              background-color: #fbebf8;
+            }
+            &:nth-child(3n+2){
+              background-color: #fcedda;
+            }
+          }
+        }
+      }
+
+    }
+    .copyright{
+      margin-bottom: 1px;
+      .title{
+        margin-bottom: 8px;
+        font-size: 15px;
+        font-weight: 400;
+        padding: 15px 14px 0 14px;
+        color: #8d8d8d;
+      }
+      .container{
+        padding: 0 14px;
+        margin-bottom: 12px;
+        .text{
+          color: #8d8d8d;
+          line-height: 1.6;
+          font-size: 14px;
+        }
+      }
+    }
   }
 </style>
 <template>
@@ -123,7 +281,28 @@
       <div class="detail" ref="detail">
         <div class="container" >
             <div class="card">
-              <book-card></book-card>
+                <div class="book-cover">
+                  <img alt="魂帝武神" src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01Qq9kRVHCs/FdC5Z9uvJ1PVdM.jpg!s">
+                  <div class="tag"></div>
+                </div>
+              <div class="info">
+                <h3 class="title">魂帝武神</h3>
+                <p class="author">
+                  <span>小小八</span>
+                </p>
+                <div class="grade">
+                    <div class="star">
+                      <svg v-for="i in 5" class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-wujiaoxing"></use>
+                      </svg>
+                    </div>
+                    <span class="read">94个评价</span>
+                </div>
+                <p class="count">
+                  字数：188万字
+                  <span class="serial">连载中</span>
+                </p>
+              </div>
             </div>
             <div class="book-dash">
               <div class="wrap">
@@ -151,7 +330,30 @@
               </div>
             </div>
             <split></split>
-
+            <div class="book-tags">
+              <div class="title">
+                <h3>类别标签</h3>
+              </div>
+              <div class="cnt">
+                  <ul class="tags">
+                    <li class="tag-item">现代言情</li>
+                    <li class="tag-item">现代言情</li>
+                  </ul>
+              </div>
+            </div>
+            <split></split>
+            <main-card title="作者其他图书"></main-card>
+            <split></split>
+            <div class="copyright">
+                <div class="title">
+                  <h1>图书信息</h1>
+                </div>
+              <div class="container">
+                <ul class="text">
+                  <li>版权：阅文集团旗下云起书院</li>
+                </ul>
+              </div>
+            </div>
         </div>
         </div>
     </section>
@@ -161,6 +363,7 @@
   import BScroll from 'better-scroll'
   import bookCard from '../book-card/book-card.vue'
   import split from '../split/split.vue'
+  import mainCard from '../main-card/main-card.vue'
   export default {
     data () {
       return {
@@ -189,7 +392,8 @@
     },
     components: {
       bookCard,
-      split
+      split,
+      mainCard
     }
   }
 </script>

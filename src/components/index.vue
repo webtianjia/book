@@ -1,6 +1,5 @@
 <style scoped lang="less">
   @import '../assets/css/mixin';
-
   .index {
     .main {
       width: 100%;
@@ -189,10 +188,6 @@
 
 <template>
   <div class="index">
-    <div style="padding:0 98px">
-      <range v-model="value"></range>
-      <input type="text" v-model="value">
-    </div>
     <div class="header-tab">
       <ul class="tab">
         <li class="tab-item  border-1px" @click="type=1" :class="{'active':type==1}">
@@ -290,7 +285,7 @@
     </main>
     <book-detail  ref="book_detail" @startReading="startReading"></book-detail>
     <book-reader ref="book_reader"></book-reader>
-    <loading></loading>
+    <loading style="display: none"></loading>
   </div>
 </template>
 
